@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<h2>Text to Image</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Generate</button>
+</form>
+
+{% if image_path %}
+  <h3>Generated Image:</h3>
+  <img src="/{{ image_path }}" alt="Generated Image" style="max-width: 100%; border: 2px solid #ccc; padding: 10px; margin-top: 20px;">
+  <a href="/{{ image_path }}" download class="button">Download Image</a>
+
+  {% endif %}
+
+<a href="/">⬅ Back to Home</a>
